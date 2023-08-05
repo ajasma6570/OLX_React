@@ -14,16 +14,20 @@ function Header() {
   const {user}= useContext(AuthContext)
   const {Firebase} = useContext(FirebaseContext)
   const handleLogin=()=>{
-    if(user){
-      history.push('/')
-    }else{
-      history.push('/login')
-    }
+    user ? history.push('/') : history.push('/login')
+  }
+
+  const handleSell=()=>{
+    user? history.push('/create') : history.push('/login')
+  }
+
+  const handleLogo=()=>{
+    history.push('/')
   }
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div className="brandName">
+        <div className="brandName" onClick={handleLogo}>
           <OlxLogo></OlxLogo>
         </div>
         <div className="placeSearch">
@@ -60,7 +64,7 @@ function Header() {
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+            <span onClick={handleSell}>SELL</span>
           </div>
         </div>
       </div>
