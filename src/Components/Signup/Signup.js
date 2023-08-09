@@ -1,6 +1,6 @@
 import React, { useState,useContext } from 'react';
 import { FirebaseContext } from '../../store/Context';
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 import Logo from '../../olx-logo.png';
 import './Signup.css';
 
@@ -23,10 +23,10 @@ export default function Signup() {
         }).then(()=>{
           history.push('/login')
         })
-
-
       })
-    })
+    }).catch((error) => {
+      alert(error.message); // Display error message in an alert box
+    });
   }
   return (
     <div>
@@ -42,7 +42,7 @@ export default function Signup() {
             onChange={(e)=>setUsername(e.target.value)}
             id="fname"
             name="name"
-            // defaultValue="John"
+            required
           />
           <br />
           <label htmlFor="fname">Email</label>
@@ -54,7 +54,7 @@ export default function Signup() {
             type="email"
             id="fname"
             name="email"
-            // defaultValue="John"
+            required
           />
           <br />
           <label htmlFor="lname">Phone</label>
@@ -66,7 +66,7 @@ export default function Signup() {
             type="number"
             id="lname"
             name="phone"
-            // defaultValue="Doe"
+            required
           />
           <br />
           <label htmlFor="lname">Password</label>
@@ -78,13 +78,13 @@ export default function Signup() {
             type="password"
             id="lname"
             name="password"
-            // defaultValue="Doe"
+            required
           />
           <br />
           <br />
           <button>Signup</button>
         </form>
-        <button>Login</button>
+        <Link to={'/login'}>Login</Link>
         
       </div>
     </div>

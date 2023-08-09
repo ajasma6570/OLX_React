@@ -27,7 +27,7 @@ function Header() {
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div className="brandName" onClick={handleLogo}>
+        <div className="brandName" onClick={handleLogo} style={{cursor:"pointer"}}>
           <OlxLogo></OlxLogo>
         </div>
         <div className="placeSearch">
@@ -62,9 +62,9 @@ function Header() {
           Logout</span>}
         <div className="sellMenu">
           <SellButton></SellButton>
-          <div className="sellMenuContent">
+          <div className="sellMenuContent" onClick={handleSell}>
             <SellButtonPlus></SellButtonPlus>
-            <span onClick={handleSell}>SELL</span>
+            <span >SELL</span>
           </div>
         </div>
       </div>
